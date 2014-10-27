@@ -1,6 +1,24 @@
-<h1>Listing movies</h1>
 
-<table>
+<% if !user_signed_in? %>
+<div class="jumbtron">
+<div class="well">
+<h1>Welcome to Movies Review</h1>
+<%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary btn-lg" %>
+</div>
+</div>
+
+
+
+
+<h1>Listing movies</h1>
+<% else %>  
+<%= link_to 'New Movie', new_movie_path, class: "btn btn-primary btn-lg" %>
+
+<% end %>
+
+<hr>
+
+<table class="table table-bordered table-responsive table-hover">
   <thead>
     <tr>
       <th>Title</th>
@@ -15,19 +33,14 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= movie.title %></td>
+        <td><%= link_to movie.title, movie %></td>
         <td><%= movie.description %></td>
         <td><%= movie.movie_length %></td>
         <td><%= movie.director %></td>
         <td><%= movie.rating %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Movie', new_movie_path %>
