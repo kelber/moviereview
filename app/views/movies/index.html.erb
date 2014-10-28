@@ -9,38 +9,38 @@
 
 
 
+ <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
 
-<h1>Listing movies</h1>
 <% else %>  
-<%= link_to 'New Movie', new_movie_path, class: "btn btn-primary btn-lg" %>
+<h1>Listing movies</h1> 
 
+</div>
+</div>
+</div>
+  
 <% end %>
 
+  <% @movies.each do |movie| %>
+  <div class="col-sm-6 col-md-3">
+  <div class="thumbnail">
+    <div id="image">
+    <%= link_to (image_tag movie.image.thumb('300x400#').url,class: "image"), movie if movie.image_stored? %>
+     </div>
 <hr>
+  <h3><%= movie.title %></h3>
+         <%= movie.description %>
+          <%= movie.movie_length %>
+          <%= movie.director %>
+          <%= movie.rating %>
 
-<table class="table table-bordered table-responsive table-hover">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Movie length</th>
-      <th>Director</th>
-      <th>Rating</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          
+  </div>
+  </div>
+       <% end %>
 
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= link_to movie.title, movie %></td>
-        <td><%= movie.description %></td>
-        <td><%= movie.movie_length %></td>
-        <td><%= movie.director %></td>
-        <td><%= movie.rating %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+
+
+

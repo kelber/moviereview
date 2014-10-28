@@ -16,3 +16,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+	background-color: #AA4847;
+}
+
+
+
+.review_title {
+	margin: 0 0 20px 0;
+	reviews {
+	padding: 15px 0;
+	border-bottom: 1px solid #EAEAEA;
+	.star-rating {
+	padding-buttom: 8px;
+	}
+ }
+
+
+   #image {
+		width: 100%;
+		-webkit-transition: all .3s ease-out;
+	  -moz-transition: all .3s ease-out;
+	  -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+		&:hover {
+			transform: scale(1.075);
+		}
+	}
+
+
+
+}
+
+

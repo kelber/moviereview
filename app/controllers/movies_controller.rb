@@ -13,6 +13,14 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
+
   end
 
   # GET /movies/new
@@ -72,6 +80,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating)
+      params.require(:movie).permit(:image, :title, :description, :movie_length, :director, :rating)
     end
 end
